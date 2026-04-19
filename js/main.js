@@ -34,7 +34,7 @@
 	window.addEventListener('DOMContentLoaded', () => {
 		let forwards = true;
 
-		if(get_cookie('dark') == '0'){
+		if(get_cookie('dark') === '0'){
 			forwards = false;
 		}
 
