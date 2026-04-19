@@ -2,7 +2,11 @@
 	--white: #FFFFFF;
 	--black: #000000;
 	--purple: #56257D;
+	--dark-purple: #451E66;
 	--red: #E86D7B;
 	--pink: #FAB9E3;
 	--blue: #B9CBFA;
+
+	--text-color: var(--black);
+	--body-color: black;
 }

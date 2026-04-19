@@ -1,26 +1,26 @@
 @import "colors.css";
 
 h1 {
-	color: var(--black);
+	color: var(--text-color);
 	margin: 0px;
 	font-size: 50px;
 }
 
 h2 {
-	color: var(--black);
+	color: var(--text-color);
 	margin: 0px;
 	font-size: 25px;
 }
 
 p {
-	color: var(--black);
+	color: var(--text-color);
 	margin: 0px;
 }
 
 body {
 	height: 100vh;
 	margin: 0px;
-	background-color: var(--white);
+	background-color: var(--body-color);
 	font-family: "Comic Sans MS", "Comic Sans";
 	display: flex;
 	flex-direction: column;
@@ -38,10 +38,14 @@ body {
 	transform: translateY(-50%);
 }
 
+.hidden {
+	display: none;
+}
+
 div.header {
-	width: calc(100vw - 0.5in);
-	height: calc(1in - 0.5in);
-	padding: 0.25in;
+	width: calc(100vw - 50px);
+	height: 50px;
+	padding: 25px;
 	background-color: var(--purple);
 	display: flex;
 	flex-direction: row;
@@ -54,5 +58,22 @@ main {
 
 div.spacer {
 	flex-basis: 100%;
+}
+
+div.switch {
+	user-select: none;
+	padding: 2px;
+	width: 56px;
+	height: 26px;
+	border-radius: 15px;
+	background-color: var(--dark-purple);
+}
+
+div.knob {
+	padding: 2px;
+	width: 22px;
+	height: 22px;
+	border-radius: 13px;
+	background-color: var(--purple);
 }
 
