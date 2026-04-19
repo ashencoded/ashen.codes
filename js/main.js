@@ -48,10 +48,10 @@
 			knob.animate(
 				[
 					{
-						transform: 'translateX(0px)'
+						transform: 'translate(0px, 0px)'
 					},
 					{
-						transform: 'translateX(30px)'
+						transform: 'translate(30px, 0px)'
 					}
 				],
 				options
@@ -59,21 +59,32 @@
 			icon.children[0].animate(
 				[
 					{
-						transform: 'translate(50px, 50px) scale(0)'
+						transform: 'translate(0px, 0px)'
 					},
 					{
-						transform: 'translate(0px, 0px) scale(1)'
+						transform: 'translate(50px, 50px)'
 					}
 				],
 				options
 			),
-			icon.children[1].animate(
+			icon.children[0].children[0].animate(
 				[
 					{
-						r: 45
+						transform: 'scale(1)'
 					},
 					{
-						r: 30
+						transform: 'scale(0)'
+					}
+				],
+				options
+			),
+			icon.children[1].children[0].animate(
+				[
+					{
+						transform: 'scale(1)'
+					},
+					{
+						transform: 'scale(1.5)'
 					}
 				],
 				options
@@ -81,12 +92,10 @@
 			icon.children[2].animate(
 				[
 					{
-						cx: 60,
-						cy: 40
+						transform: 'translate(50px, 50px)'
 					},
 					{
-						cx: 50,
-						cy: 50
+						transform: 'translate(60px, 40px)'
 					}
 				],
 				options
@@ -94,14 +103,21 @@
 			icon.children[3].animate(
 				[
 					{
-						r: 0,
-						cx: 60,
-						cy: 40
+						transform: 'translate(50px, 50px)'
 					},
 					{
-						r: 25,
-						cx: 50,
-						cy: 50
+						transform: 'translate(60px, 40px)'
+					}
+				],
+				options
+			),
+			icon.children[3].children[0].animate(
+				[
+					{
+						transform: 'scale(1)'
+					},
+					{
+						transform: 'scale(0)'
 					}
 				],
 				options
