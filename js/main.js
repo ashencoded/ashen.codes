@@ -1,4 +1,18 @@
 (() => {
+	function get_cookie(name){
+		const cookie = decodeURIComponent(document.cookie).split(';').find((c) => c.split('=')[0] === name);
+
+		if(cookie){
+			return cookie.split('=')[1];
+		}
+
+		return null;
+	}
+
+	function set_cookie(name, value, expires){
+		document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+	}
+
 	function set_dark_mode(){
 		document.documentElement.style.setProperty('--text-color', 'var(--white)');
 		document.documentElement.style.setProperty('--body-color', 'var(--black)');
@@ -11,6 +25,10 @@
 
 	window.addEventListener('DOMContentLoaded', () => {
 		let is_dark = false;
+
+		if(get_cookie('dark') == '1'){
+			is_dark = true;
+		}
 
 		const options = {
 			duration: 200,
@@ -84,9 +102,14 @@
 		];
 
 		animations[0].addEventListener('finish', () => {
+			const expires = Date.now() + (60 * 1000);
 			if(forwards){
+				set_cookie('dark', '1', expires);
+
 				set_dark_mode();
 			}else{
+				set_cookie('dark', '0', expires);
+
 				set_light_mode();
 			}
 		});
