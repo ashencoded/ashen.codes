@@ -24,9 +24,11 @@
 	}
 
 	window.addEventListener('DOMContentLoaded', () => {
+		let forwards = false;
 		let is_dark = false;
 
 		if(get_cookie('dark') == '1'){
+			forwards = true;
 			is_dark = true;
 		}
 
@@ -34,7 +36,6 @@
 			duration: 200,
 			fill: 'both'
 		};
-		let forwards = true;
 		const icon = document.querySelector('#bright-mode-icon');
 		const knob = icon.parentNode;
 		const animations = [
@@ -116,7 +117,12 @@
 
 		animations.forEach((a) => a.pause());
 
-		set_dark_mode();
+		if(is_dark){
+			set_dark_mode();
+		}else{
+			set_light_mode();
+			animations.forEach((a) => a.currentTime = a.effect.getTiming().duration);
+		}
 
 		document.querySelectorAll('div.switch').forEach((switch_element) => {
 			switch_element.addEventListener('click', () => {
