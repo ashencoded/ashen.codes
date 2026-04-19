@@ -34,7 +34,7 @@
 	window.addEventListener('DOMContentLoaded', () => {
 		let forwards = true;
 
-		if(get_cookie('dark') === '0'){
+		if(get_cookie('dark') === '1'){
 			forwards = false;
 		}
 
@@ -126,18 +126,18 @@
 
 		animations[0].addEventListener('finish', () => {
 			if(forwards){
-				set_dark_mode();
-			}else{
 				set_light_mode();
+			}else{
+				set_dark_mode();
 			}
 		});
 
 		animations.forEach((a) => a.pause());
 
 		if(forwards){
-			set_dark_mode();
-		}else{
 			set_light_mode();
+		}else{
+			set_dark_mode();
 
 			animations.forEach((a) => a.currentTime = a.effect.getTiming().duration);
 		}
