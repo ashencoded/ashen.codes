@@ -14,22 +14,28 @@
 	}
 
 	function set_dark_mode(){
+		const expires = Date.now() + (60 * 1000);
+
+		set_cookie('dark', '1', expires);
+
 		document.documentElement.style.setProperty('--text-color', 'var(--white)');
 		document.documentElement.style.setProperty('--body-color', 'var(--black)');
 	}
 
 	function set_light_mode(){
+		const expires = Date.now() + (60 * 1000);
+
+		set_cookie('dark', '0', expires);
+
 		document.documentElement.style.setProperty('--text-color', 'var(--black)');
 		document.documentElement.style.setProperty('--body-color', 'var(--white)');
 	}
 
 	window.addEventListener('DOMContentLoaded', () => {
-		let forwards = false;
-		let is_dark = false;
+		let forwards = true;
 
-		if(get_cookie('dark') == '1'){
-			forwards = true;
-			is_dark = true;
+		if(get_cookie('dark') == '0'){
+			forwards = false;
 		}
 
 		const options = {
@@ -103,24 +109,20 @@
 		];
 
 		animations[0].addEventListener('finish', () => {
-			const expires = Date.now() + (60 * 1000);
 			if(forwards){
-				set_cookie('dark', '1', expires);
-
 				set_dark_mode();
 			}else{
-				set_cookie('dark', '0', expires);
-
 				set_light_mode();
 			}
 		});
 
 		animations.forEach((a) => a.pause());
 
-		if(is_dark){
+		if(forwards){
 			set_dark_mode();
 		}else{
 			set_light_mode();
+
 			animations.forEach((a) => a.currentTime = a.effect.getTiming().duration);
 		}
 
